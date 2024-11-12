@@ -1,1 +1,1 @@
-No changelog provided.
+Fix for Fabric >1.21.1

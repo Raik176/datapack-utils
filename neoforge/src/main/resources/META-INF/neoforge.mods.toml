@@ -13,3 +13,6 @@ logoBlur = false
 
 [[mixins]]
 config = "${id}-common.mixins.json"
+
+[[mixins]]
+config = "${id}-neoforge.mixins.json"
