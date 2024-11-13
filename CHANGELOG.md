@@ -1,1 +1,1 @@
-Fix for Fabric >1.21.1
+Add support for inverse tags.

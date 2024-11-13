@@ -1,4 +1,4 @@
-package org.rhm.datapack_utils;
+package org.rhm.datapack_utils.types;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
