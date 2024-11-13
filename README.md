@@ -26,6 +26,8 @@ As modern mods are technically also datapacks, you can use this to add fuels or 
 ---
 
 ### Custom Fuels
+This file allows you to specify custom fuels.
+
 **Do not try to override vanilla/modded entries!**
 
 Fields:
@@ -42,10 +44,13 @@ Fields:
   }
 ]
 ```
+Will add `minecraft:dirt` as a fuel, with a burn time of `2000` ticks.
 
 ---
 
 ### Custom Compostables
+This file allows you to specify custom compostable items.
+
 **Do not try to override vanilla/modded entries!**
 
 Fields:
@@ -62,19 +67,23 @@ Fields:
   }
 ]
 ```
+Will add `minecraft:dirt` as a compostable, with a `50%` chance to succeed.
 
 ---
 
 ### Inverse Tags (Blacklist)
+Inverse tags lets you remove entries from tags.
+
 `data/<namespace>/utils/inverse-tags/<registry>/<tag location>.json`
 
-example: `data/minecraft/utils/inverse-tags/block/spruce_logs.json`
+Example:
+`data/minecraft/utils/inverse-tags/block/spruce_logs.json`
 ```json
 [
   "minecraft:stripped_spruce_log"
 ]
 ```
-Will remove `minecraft:stripped_spruce_log` from the `spruce_logs` tag.
+Will remove `minecraft:stripped_spruce_log` from the `minecraft:block/spruce_logs` tag.
 
 # Credits
   * Icon: [Minecraft Datapack Utility](https://github.com/ChenCMD/MC-Datapack-Utility/blob/master/icon.png)
