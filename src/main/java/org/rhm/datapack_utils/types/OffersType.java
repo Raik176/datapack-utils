@@ -2,7 +2,9 @@ package org.rhm.datapack_utils.types;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+//? if >=1.20.6 {
 import net.minecraft.core.registries.BuiltInRegistries;
+//?}
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.item.trading.MerchantOffer;
 

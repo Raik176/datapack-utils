@@ -2,15 +2,11 @@ package org.rhm.datapack_utils;
 
 import com.google.gson.JsonParser;
 import com.mojang.serialization.JsonOps;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraft.world.item.trading.MerchantOffer;
 import org.rhm.datapack_utils.types.CompostableType;
 import org.rhm.datapack_utils.types.FuelType;
 import org.rhm.datapack_utils.types.OffersType;
