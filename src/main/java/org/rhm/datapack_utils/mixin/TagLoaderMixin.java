@@ -39,7 +39,14 @@ public abstract class TagLoaderMixin<T> {
                     toRemove.addAll(TagEntry.CODEC.listOf().decode(
                             JsonOps.INSTANCE,
                             JsonParser.parseReader(tags.getValue().openAsReader())
-                    ).getOrThrow().getFirst().stream().map(TagEntry::toString).collect(Collectors.toSet()));
+                    ).getOrThrow(
+                            //? if <1.20.6 {
+                            /*false,
+                            (string) -> {
+                                //fuck, should probably log here
+                            }
+                            *///?}
+                    ).getFirst().stream().map(TagEntry::toString).collect(Collectors.toSet()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

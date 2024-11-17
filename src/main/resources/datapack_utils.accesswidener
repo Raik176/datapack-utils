@@ -1,2 +1,2 @@
 accessWidener v2 named
-accessible class net/minecraft/core/registries/BuiltInRegistries$RegistryBootstrap
+accessible method net/minecraft/world/item/trading/MerchantOffer <init> (Lnet/minecraft/world/item/trading/ItemCost;Ljava/util/Optional;Lnet/minecraft/world/item/ItemStack;IIZIIFI)V

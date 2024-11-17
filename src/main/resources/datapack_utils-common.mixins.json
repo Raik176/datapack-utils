@@ -3,7 +3,9 @@
   "package": "org.rhm.datapack_utils.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "TagLoaderMixin"
+    "AbstractVillagerMixin",
+    "TagLoaderMixin",
+    "VillagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
