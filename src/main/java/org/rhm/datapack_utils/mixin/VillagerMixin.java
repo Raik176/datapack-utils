@@ -15,7 +15,7 @@ import org.rhm.datapack_utils.types.OffersType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Mixin(Villager.class)
 public abstract class VillagerMixin extends AbstractVillagerMixin {
@@ -27,14 +27,12 @@ public abstract class VillagerMixin extends AbstractVillagerMixin {
 
     //? if >=1.20.6 {
     @Override
-    protected ArrayList<VillagerTrades.ItemListing> datapack_utils$onUpdateTrades(Object[] elements) {
-        ArrayList<VillagerTrades.ItemListing> listings = super.datapack_utils$onUpdateTrades(elements);
-
+    protected List<VillagerTrades.ItemListing> datapack_utils$modifyTradings(List<VillagerTrades.ItemListing> elements) {
         for (OffersType offersType : DatapackUtilsCommon.getOffersForProfession(getVillagerData().getProfession())) {
-            if (offersType.replace()) listings.clear();
+            if (offersType.replace()) elements.clear();
 
             for (MerchantOffer offer : offersType.offers()) {
-                listings.add(new VillagerTrades.ItemListing() {
+                elements.add(new VillagerTrades.ItemListing() {
                     @Override
                     public @Nullable MerchantOffer getOffer(Entity entity, RandomSource randomSource) {
                         return offer;
@@ -43,7 +41,7 @@ public abstract class VillagerMixin extends AbstractVillagerMixin {
             }
         }
 
-        return listings;
+        return elements;
     }
     //?}
 }
