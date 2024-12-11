@@ -104,7 +104,7 @@ fun convertMinecraftTargets(): String {
 }
 
 tasks.processResources {
-    properties(listOf("META-INF/neoforge.mods.toml", "pack.mcmeta"),
+    properties(listOf("META-INF/neoforge.mods.toml", "pack.mcmeta", "${mod.id}-fabric.mixins.json"),
         "id" to mod.id,
         "name" to mod.name,
         "version" to mod.version,

@@ -1,1 +1,1 @@
-Got rid of horrible villager mixin
+Fix crash on Fabric & NeoForge.

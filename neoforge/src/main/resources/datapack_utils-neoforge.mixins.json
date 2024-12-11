@@ -1,11 +1,12 @@
 {
   "required": true,
-  "package": "org.rhm.datapack_utils.neoforge.mixin",
+  "package": "${group}.${id}.neoforge.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "ComposterBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "refmap": "${id}-fabric-${minecraft}-refmap.json"
 }

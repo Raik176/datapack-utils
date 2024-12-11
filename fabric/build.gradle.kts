@@ -96,7 +96,7 @@ fun convertMinecraftTargets(): String {
 }
 
 tasks.processResources {
-    properties(listOf("fabric.mod.json"),
+    properties(listOf("fabric.mod.json", "${mod.id}-fabric.mixins.json"),
         "id" to mod.id,
         "name" to mod.name,
         "version" to mod.version,

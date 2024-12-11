@@ -56,6 +56,14 @@ tasks.build {
     description = "Must run through 'chiseledBuild'"
 }
 
+tasks.processResources {
+    properties(listOf("${mod.id}-common.mixins.json"),
+        "id" to mod.id,
+        "group" to mod.group,
+        "minecraft" to minecraft
+    )
+}
+
 publishMods {
     changelog = providers.fileContents(layout.projectDirectory.file("../../CHANGELOG.md")).asText.get()
     type = STABLE
