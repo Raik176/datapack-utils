@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 //? if >=1.21.2 {
-/*import net.minecraft.world.level.block.entity.FuelValues;
+import net.minecraft.world.level.block.entity.FuelValues;
 @Mixin(FuelValues.class)
 public class FuelValuesMixin {
     @Inject(method = "isFuel", at = @At("TAIL"), cancellable = true)
@@ -23,10 +23,10 @@ public class FuelValuesMixin {
     }
 }
 
-*///?} else {
-import com.mojang.authlib.minecraft.client.MinecraftClient;
+//?} else {
+/*import com.mojang.authlib.minecraft.client.MinecraftClient;
 @Mixin(MinecraftClient.class)
 public class FuelValuesMixin { //Don't really want to add the json processor just for this
 
 }
-//?}
+*///?}

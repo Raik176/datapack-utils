@@ -7,14 +7,14 @@ plugins {
     id("dev.architectury.loom")
     id("architectury-plugin")
     id("com.github.johnrengelman.shadow")
-    id("me.modmuss50.mod-publish-plugin") version "0.7.4"
+    id("me.modmuss50.mod-publish-plugin")
 }
 
 val loader = prop("loom.platform")!!
 val minecraft: String = stonecutter.current.version
 val common: Project = requireNotNull(stonecutter.node.sibling("")) {
     "No common project for $project"
-}
+}.project
 
 version = "${mod.version}+$minecraft"
 group = "${mod.group}.$loader"
@@ -111,7 +111,8 @@ tasks.processResources {
         "description" to mod.prop("description"),
         "author" to mod.prop("author"),
         "license" to mod.prop("license"),
-        "minecraft" to convertMinecraftTargets()
+        "minecraft" to convertMinecraftTargets(),
+        "minecraftTarget" to common.mod.prop("mc_targets").split(" ").first()
     )
 }
 

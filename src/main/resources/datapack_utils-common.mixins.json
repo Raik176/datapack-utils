@@ -5,10 +5,10 @@
   "mixins": [
     "AbstractVillagerMixin",
     "TagLoaderMixin",
-    "VillagerMixin"
+    "VillagerMixin",
+    "AnvilMenuMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "refmap": "${id}-common-${minecraft}-refmap.json"
+  }
 }

@@ -8,6 +8,7 @@ import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import org.rhm.datapack_utils.types.CompostableType;
+import org.rhm.datapack_utils.types.CustomAnvilRecipe;
 import org.rhm.datapack_utils.types.FuelType;
 import org.rhm.datapack_utils.types.OffersType;
 
@@ -21,7 +22,8 @@ public class DatapackUtilsCommon {
     public static DatapackUtilsBase impl;
     private static Set<FuelType> FUELS = new HashSet<>();
     private static Set<CompostableType> COMPOSTABLES = new HashSet<>();
-    private static Set<OffersType> OFFERS = new HashSet<>();
+    private static final Set<OffersType> OFFERS = new HashSet<>();
+    public static final Set<CustomAnvilRecipe> ANVIL_RECIPES = new HashSet<>();
 
     public static void init() {
 
@@ -32,6 +34,7 @@ public class DatapackUtilsCommon {
         reloadFuels(manager);
         reloadCompostables(manager);
         reloadCustomTrades(manager);
+        reloadAnvilRecipes(manager);
     }
 
     private static void reloadFuels(ResourceManager manager) {
@@ -125,6 +128,29 @@ public class DatapackUtilsCommon {
             }
         }
         //?}
+    }
+
+    private static void reloadAnvilRecipes(ResourceManager manager) {
+        ANVIL_RECIPES.clear();
+
+        for (Map.Entry<ResourceLocation, Resource> customFuels : manager.listResources("utils", (x) ->
+                x.getPath().startsWith("utils/anvil_recipe/")
+                && x.getPath().endsWith(".json")
+        ).entrySet()) {
+            Resource resource = customFuels.getValue();
+            try {
+                ANVIL_RECIPES.add(CustomAnvilRecipe.CODEC.decode(JsonOps.INSTANCE, JsonParser.parseReader(resource.openAsReader())).getOrThrow(
+                        //? if <1.20.6 {
+                        /*false,
+                        (string) -> {
+                            //fuck, should probably log here
+                        }
+                        *///?}
+                ).getFirst());
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static Set<OffersType> getOffersForProfession(VillagerProfession profession) {

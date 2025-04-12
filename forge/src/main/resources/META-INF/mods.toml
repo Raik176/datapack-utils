@@ -1,6 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "*"
 license = "${license}"
+issueTrackerURL = "https://github.com/Raik176/datapack-utils/issues"
 
 [[mods]]
 modId = "${id}"
