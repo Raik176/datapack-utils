@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "${group}.${id}.fabric.mixin",
+  "package": "org.rhm.datapack_utils.fabric.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "FuelValuesMixin"
