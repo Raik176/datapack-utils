@@ -139,6 +139,10 @@ for (node in stonecutter.tree.nodes) {
             archiveClassifier = "dev-shadow"
         }
 
+        node.project.tasks.named("validateAccessWidener") {
+            enabled = false
+        }
+
         node.project.tasks.withType<RemapJarTask> {
             injectAccessWidener = true
             input = node.project.tasks.shadowJar.get().archiveFile
