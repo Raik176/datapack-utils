@@ -9,47 +9,47 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 
 //? if <1.21.2 {
-/*import net.fabricmc.fabric.api.registry.FuelRegistry;
- *///?} else {
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
+ //?} else {
+/*import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-//?}
+*///?}
 
 public class DatapackUtilsFabricImpl implements DatapackUtilsBase {
     //? if >=1.21.2
-    public static final Object2IntMap<ItemLike> FUELS = new Object2IntOpenHashMap<>();
+    /*public static final Object2IntMap<ItemLike> FUELS = new Object2IntOpenHashMap<>();*/
 
 
     @Override
     public void registerFuel(ItemLike item, int duration) {
         //? if <1.21.2 {
-        /*FuelRegistry.INSTANCE.add(item, duration);
-        *///?} else
-        FUELS.put(item, duration);
+        FuelRegistry.INSTANCE.add(item, duration);
+        //?} else
+        /*FUELS.put(item, duration);*/
     }
 
     @Override
     public void registerFuel(TagKey<Item> tag, int duration) {
         //? if <1.21.2 {
-        /*FuelRegistry.INSTANCE.add(tag, duration);
-         *///?} else
-        forAllItemsInTag(tag, (item) -> FUELS.put(item, duration));
+        FuelRegistry.INSTANCE.add(tag, duration);
+         //?} else
+        /*forAllItemsInTag(tag, (item) -> FUELS.put(item, duration));*/
     }
 
     @Override
     public void unregisterFuel(ItemLike item) {
         //? if <1.21.2 {
-        /*FuelRegistry.INSTANCE.remove(item);
-         *///?} else
-        FUELS.remove(item);
+        FuelRegistry.INSTANCE.remove(item);
+         //?} else
+        /*FUELS.remove(item);*/
     }
 
     @Override
     public void unregisterFuel(TagKey<Item> tag) {
         //? if <1.21.2 {
-        /*FuelRegistry.INSTANCE.remove(tag);
-         *///?} else
-        forAllItemsInTag(tag, FUELS::remove);
+        FuelRegistry.INSTANCE.remove(tag);
+         //?} else
+        /*forAllItemsInTag(tag, FUELS::remove);*/
     }
 
     @Override

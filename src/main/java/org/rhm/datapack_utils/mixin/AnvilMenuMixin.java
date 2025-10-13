@@ -28,14 +28,14 @@ public abstract class AnvilMenuMixin extends ItemCombinerMenu {
     @Shadow @Nullable private String itemName;
 
     //? if >=1.21.3 {
-    public AnvilMenuMixin(@Nullable MenuType<?> menuType, int i, Inventory inventory, ContainerLevelAccess containerLevelAccess, ItemCombinerMenuSlotDefinition itemCombinerMenuSlotDefinition) {
+    /*public AnvilMenuMixin(@Nullable MenuType<?> menuType, int i, Inventory inventory, ContainerLevelAccess containerLevelAccess, ItemCombinerMenuSlotDefinition itemCombinerMenuSlotDefinition) {
         super(menuType, i, inventory, containerLevelAccess, itemCombinerMenuSlotDefinition);
     }
-    //?} else {
-    /*public AnvilMenuMixin(@Nullable MenuType<?> menuType, int i, Inventory inventory, ContainerLevelAccess containerLevelAccess) {
+    *///?} else {
+    public AnvilMenuMixin(@Nullable MenuType<?> menuType, int i, Inventory inventory, ContainerLevelAccess containerLevelAccess) {
         super(menuType, i, inventory, containerLevelAccess);
     }
-    *///?}
+    //?}
 
     @Inject(method = "createResult", at = @At("HEAD"), cancellable = true)
     private void createResult(CallbackInfo ci) {
