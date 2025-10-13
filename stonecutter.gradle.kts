@@ -44,7 +44,7 @@ plugins {
     id("dev.kikugie.fletching-table.lexforge") version "0.1.0-alpha.22" apply false
     id("dev.kikugie.fletching-table.neoforge") version "0.1.0-alpha.22" apply false
 }
-stonecutter active "1.21.3" /* [SC] DO NOT EDIT */
+stonecutter active "1.20.6" /* [SC] DO NOT EDIT */
 
 val changelogProvider = layout.buildDirectory.file("CHANGELOG.md")
 changelogProvider.get().asFile.apply {
@@ -98,6 +98,15 @@ for (node in stonecutter.tree.nodes) {
             isCanBeConsumed = false
             isCanBeResolved = true
         }
+        val fancyName = when (node.branch.id) {
+            "fabric" -> "Fabric"
+            "forge" -> "Forge"
+            "neoforge" -> "NeoForge"
+            "" -> "Common"
+            else -> {
+                TODO("Invalid branch: ${node.branch.id}")
+            }
+        }
 
         node.project.dependencies {
             add("minecraft", "com.mojang:minecraft:$minecraft")
@@ -110,7 +119,7 @@ for (node in stonecutter.tree.nodes) {
         node.project.configurations {
             named("compileClasspath") { extendsFrom(commonBundle) }
             named("runtimeClasspath") { extendsFrom(commonBundle) }
-            maybeCreate("developmentFabric").extendsFrom(commonBundle)
+            maybeCreate("development$fancyName").extendsFrom(commonBundle)
         }
 
         node.project.dependencies {
@@ -121,7 +130,7 @@ for (node in stonecutter.tree.nodes) {
 
             if (loader != "common") {
                 commonBundle(project(common.path, "namedElements")) { isTransitive = false }
-                shadowBundle(project(common.path, "transformProductionFabric")) { isTransitive = false }
+                shadowBundle(project(common.path, "transformProduction$fancyName")) { isTransitive = false }
             }
         }
 
@@ -139,10 +148,6 @@ for (node in stonecutter.tree.nodes) {
 
         node.project.tasks.withType<Jar> {
             archiveClassifier = "dev"
-        }
-
-        node.project.tasks.named("validateAccessWidener") {
-            enabled = false
         }
 
         if (loader != "common") {
@@ -319,6 +324,7 @@ publishMods {
     displayName = mod.version
 
     github {
+        changelog = rootProject.publishMods.changelog
         accessToken = providers.environmentVariable("GITHUB_TOKEN")
         repository = mod.prop("github")
         commitish = "main"
